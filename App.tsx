@@ -18,6 +18,22 @@ declare global {
   }
 }
 
+const PageBreaks = () => {
+  return (
+    <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-50 overflow-hidden print:hidden">
+       {/* Visual dashes every 297mm to indicate page breaks */}
+       <div 
+         className="w-full h-full opacity-50"
+         style={{
+           // A4 Height is 297mm. We draw a red line at 296.5mm to act as a margin warning.
+           background: 'linear-gradient(to bottom, transparent 296.5mm, dashed 1px #ef4444 296.5mm, transparent 297mm)',
+           backgroundSize: '100% 297mm'
+         }}
+       />
+    </div>
+  )
+}
+
 const App = () => {
   const [data, setData] = useState<ResumeData>(INITIAL_DATA);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -269,11 +285,12 @@ const App = () => {
         <div className="flex-1 bg-gray-100 dark:bg-black/50 overflow-y-auto p-8 md:p-12 flex justify-center custom-scrollbar print:p-0 print:overflow-visible print:bg-white print:block print:w-full print:h-auto">
            <div 
              id="resume-preview" 
-             className="bg-white shadow-2xl print:shadow-none w-[210mm] min-h-[296.5mm] h-fit overflow-hidden transition-all duration-500 ease-in-out transform origin-top print:w-full print:h-auto print:scale-100 print:transform-none"
+             className="relative bg-white shadow-2xl print:shadow-none w-[210mm] min-h-[296.5mm] h-fit transition-all duration-500 ease-in-out transform origin-top print:w-full print:h-auto print:scale-100 print:transform-none"
              style={{ 
                transform: 'scale(var(--preview-scale, 1))' 
              }}
            >
+              <PageBreaks />
               {data.meta.template === 'classic' && <TemplateClassic data={data} />}
               {data.meta.template === 'modern' && <TemplateModern data={data} />}
               {data.meta.template === 'creative' && <TemplateCreative data={data} />}

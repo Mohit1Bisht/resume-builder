@@ -41,8 +41,16 @@ export interface ProjectItem {
   description: string;
 }
 
+export interface CertificationItem {
+  id: string;
+  name: string;
+  issuer: string;
+  date: string;
+  link: string;
+}
+
 export type TemplateType = 'classic' | 'modern' | 'creative';
-export type SectionType = 'work' | 'education' | 'skills' | 'projects';
+export type SectionType = 'work' | 'education' | 'skills' | 'projects' | 'certifications';
 
 export interface ResumeData {
   personal: PersonalInfo;
@@ -50,6 +58,7 @@ export interface ResumeData {
   education: EducationItem[];
   skills: SkillItem[];
   projects: ProjectItem[];
+  certifications: CertificationItem[];
   meta: {
     template: TemplateType;
     accentColor: string;

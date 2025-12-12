@@ -62,10 +62,26 @@ export const INITIAL_DATA: ResumeData = {
       description: 'A productivity application focused on simple task management. Developed with React Native for cross-platform support on iOS and Android.',
     }
   ],
+  certifications: [
+    {
+      id: '1',
+      name: 'AWS Certified Solutions Architect',
+      issuer: 'Amazon Web Services',
+      date: '2022-05',
+      link: 'https://aws.amazon.com/certification/'
+    },
+    {
+      id: '2',
+      name: 'Meta Frontend Developer',
+      issuer: 'Coursera',
+      date: '2021-11',
+      link: ''
+    }
+  ],
   meta: {
     template: 'modern',
     accentColor: '#0ea5e9',
     fontFamily: 'font-sans',
-    sectionOrder: ['work', 'projects', 'education', 'skills'],
+    sectionOrder: ['work', 'projects', 'education', 'certifications', 'skills'],
   },
 };

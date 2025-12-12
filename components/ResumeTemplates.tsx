@@ -92,6 +92,27 @@ export const TemplateClassic: React.FC<TemplateProps> = ({ data }) => {
              ))}
           </section>
         );
+        if (section === 'certifications' && data.certifications.length > 0) return (
+          <section key="certs" className="mb-6">
+             <h3 className="text-lg font-bold uppercase mb-4 border-b border-gray-200 pb-1">Certifications</h3>
+             {data.certifications.map(cert => (
+               <div key={cert.id} className="mb-3 break-inside-avoid">
+                 <div className="flex justify-between items-baseline">
+                   <h4 className="font-bold text-md">{cert.name}</h4>
+                   <span className="text-sm text-gray-500 italic">{cert.date}</span>
+                 </div>
+                 <div className="text-sm flex items-center gap-2">
+                    <span className="text-gray-700">{cert.issuer}</span>
+                    {cert.link && (
+                      <a href={cert.link.startsWith('http') ? cert.link : `https://${cert.link}`} target="_blank" rel="noopener noreferrer" className="text-xs hover:underline" style={{ color: meta.accentColor }}>
+                        (View)
+                      </a>
+                    )}
+                 </div>
+               </div>
+             ))}
+          </section>
+        );
         if (section === 'skills') return (
           <section key="skills" className="mb-6">
             <h3 className="text-lg font-bold uppercase mb-3 border-b border-gray-200 pb-1">Skills</h3>
@@ -139,6 +160,24 @@ export const TemplateModern: React.FC<TemplateProps> = ({ data }) => {
             </div>
           ))}
         </div>
+
+        {data.certifications.length > 0 && (
+          <div className="mb-8">
+            <h3 className="text-xs font-bold uppercase tracking-wider mb-4 border-b border-white/20 pb-2">Certifications</h3>
+            {data.certifications.map(cert => (
+              <div key={cert.id} className="mb-4">
+                <div className="font-bold text-sm">{cert.name}</div>
+                <div className="text-xs text-white/90">{cert.issuer}</div>
+                <div className="flex justify-between items-center mt-1">
+                  <span className="text-xs text-white/70 italic">{cert.date}</span>
+                  {cert.link && (
+                     <a href={cert.link} target="_blank" className="text-xs text-white/80 hover:text-white hover:underline">Link ↗</a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         <div>
           <h3 className="text-xs font-bold uppercase tracking-wider mb-4 border-b border-white/20 pb-2">Skills</h3>
@@ -273,6 +312,22 @@ export const TemplateCreative: React.FC<TemplateProps> = ({ data }) => {
                  </div>
                ))}
              </section>
+
+             {data.certifications.length > 0 && (
+               <section>
+                 <h3 className="font-bold text-gray-900 text-lg mb-4 border-b pb-2">Certifications</h3>
+                 {data.certifications.map(cert => (
+                   <div key={cert.id} className="mb-4 bg-gray-50 p-4 rounded-lg">
+                      <h4 className="font-bold text-sm">{cert.name}</h4>
+                      <div className="text-sm opacity-80">{cert.issuer}</div>
+                      <div className="flex justify-between items-center mt-1">
+                         <span className="text-xs text-gray-500">{cert.date}</span>
+                         {cert.link && <a href={cert.link} target="_blank" className="text-xs text-gray-500 hover:text-gray-900">View ↗</a>}
+                      </div>
+                   </div>
+                 ))}
+               </section>
+             )}
 
              <section>
                <h3 className="font-bold text-gray-900 text-lg mb-4 border-b pb-2">Skills</h3>

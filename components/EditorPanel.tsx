@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ResumeData, SectionType, ExperienceItem, EducationItem, SkillItem, ProjectItem } from '../types';
+import { ResumeData, SectionType, ExperienceItem, EducationItem, SkillItem, ProjectItem, CertificationItem } from '../types';
 import { IconGripVertical, IconTrash, IconPlus } from './Icons';
 
 interface EditorPanelProps {
@@ -61,17 +61,17 @@ export const EditorPanel: React.FC<EditorPanelProps> = ({ data, onChange }) => {
 
   // Generic helpers for array manipulation
   const addItem = <T extends { id: string }>(
-    key: 'work' | 'education' | 'skills' | 'projects',
+    key: 'work' | 'education' | 'skills' | 'projects' | 'certifications',
     newItem: T
   ) => {
     onChange({ ...data, [key]: [...data[key], newItem] });
   };
 
-  const removeItem = (key: 'work' | 'education' | 'skills' | 'projects', id: string) => {
+  const removeItem = (key: 'work' | 'education' | 'skills' | 'projects' | 'certifications', id: string) => {
     onChange({ ...data, [key]: (data[key] as any[]).filter(item => item.id !== id) });
   };
 
-  const updateItem = (key: 'work' | 'education' | 'skills' | 'projects', id: string, field: string, value: any) => {
+  const updateItem = (key: 'work' | 'education' | 'skills' | 'projects' | 'certifications', id: string, field: string, value: any) => {
     onChange({
       ...data,
       [key]: (data[key] as any[]).map(item => item.id === id ? { ...item, [field]: value } : item)
@@ -209,6 +209,28 @@ export const EditorPanel: React.FC<EditorPanelProps> = ({ data, onChange }) => {
                      className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-gray-500 dark:text-gray-400 hover:border-brand-500 hover:text-brand-500 transition-all flex justify-center items-center gap-2 font-medium text-sm"
                    >
                      <IconPlus className="w-4 h-4" /> Add Education
+                   </button>
+                 </SectionWrapper>
+               )}
+
+               {section === 'certifications' && (
+                 <SectionWrapper title="Certifications">
+                   {data.certifications.map(cert => (
+                     <div key={cert.id} className="p-4 border border-gray-100 dark:border-gray-700 rounded-lg bg-gray-50/50 dark:bg-gray-800 mb-4 animate-fade-in relative group/item">
+                       <button onClick={() => removeItem('certifications', cert.id)} className="absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors opacity-0 group-hover/item:opacity-100"><IconTrash className="w-4 h-4" /></button>
+                       <InputGroup label="Certification Name" value={cert.name} onChange={(v) => updateItem('certifications', cert.id, 'name', v)} />
+                       <InputGroup label="Issued By" value={cert.issuer} onChange={(v) => updateItem('certifications', cert.id, 'issuer', v)} />
+                       <div className="grid grid-cols-2 gap-4">
+                          <InputGroup label="Date" value={cert.date} onChange={(v) => updateItem('certifications', cert.id, 'date', v)} type="month" />
+                          <InputGroup label="Link" value={cert.link} onChange={(v) => updateItem('certifications', cert.id, 'link', v)} placeholder="Credential URL" />
+                       </div>
+                     </div>
+                   ))}
+                    <button 
+                     onClick={() => addItem<CertificationItem>('certifications', { id: Date.now().toString(), name: 'Certificate Name', issuer: 'Issuer Organization', date: '', link: '' })}
+                     className="w-full py-2 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-gray-500 dark:text-gray-400 hover:border-brand-500 hover:text-brand-500 transition-all flex justify-center items-center gap-2 font-medium text-sm"
+                   >
+                     <IconPlus className="w-4 h-4" /> Add Certification
                    </button>
                  </SectionWrapper>
                )}
