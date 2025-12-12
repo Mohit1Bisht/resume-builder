@@ -1,48 +1,116 @@
-Free Resume Builder
-<p align="center"> <img src="https://img.shields.io/badge/React-18-blue?logo=react" /> <img src="https://img.shields.io/badge/TypeScript-5-blue?logo=typescript" /> <img src="https://img.shields.io/badge/Vite-Fast-purple?logo=vite" /> <img src="https://img.shields.io/badge/TailwindCSS-CDN-38BDF8?logo=tailwindcss" /> <img src="https://img.shields.io/badge/License-MIT-green" /> </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+</head>
+<body>
 
-A modern and easy-to-use Resume Builder built with React, TypeScript, and Vite, allowing users to effortlessly create professional resumes in their browser.
-Enjoy live preview, custom templates, theme controls, PDF export, autosave, and a fully responsive UI.
+<h2 class="center">Free Resume Builder</h2>
 
-✨ Features
+<p>
+  A modern and easy-to-use <strong>Resume Builder</strong> built with 
+  <strong>React</strong>, <strong>TypeScript</strong>, and <strong>Vite</strong>, 
+  allowing users to effortlessly create professional resumes in their browser.
+  Enjoy <strong>live preview</strong>, <strong>custom templates</strong>, 
+  <strong>theme controls</strong>, <strong>PDF export</strong>, 
+  <strong>autosave</strong>, and a <strong>fully responsive UI</strong>.
+</p>
 
-✔️ Live preview with instant updates
-✔️ Add, edit, delete & reorder resume sections
-✔️ Multiple resume templates with theme + font customization
-✔️ Export as high-quality PDF
-✔️ Autosave using LocalStorage
-✔️ Fully responsive & mobile friendly
-✔️ Dark/Light mode toggle
+<hr>
 
-🛠️ Tech Stack
-Technology	Purpose
-React 18	UI Components
-TypeScript	Type-safe development
-Vite	Super-fast bundler & dev server
-Tailwind CSS (CDN)	Styling
-html2pdf.js	PDF Export
-LocalStorage	Data persistence
-🚀 Getting Started
-1️⃣ Install dependencies
-npm install
+<!-- Table of Contents -->
+<h2>📚 Table of Contents</h2>
+<ol>
+  <li>⭐ Introduction</li>
+  <li>🛠 Tech Stack</li>
+  <li>✨ Features</li>
+  <li>🚀 Quick Start</li>
+  <li>🗂 Project Structure</li>
+  <li>📦 More</li>
+</ol>
 
-2️⃣ Start development server
-npm run dev
+<hr>
 
-3️⃣ Build for production
-npm run build
+<!-- Introduction -->
+<h2>📖 Introduction</h2>
+<p>
+  The <strong>Free Resume Builder</strong> is a fast, clean, and intuitive tool 
+  built with React + TypeScript + Vite. It allows users to 
+  <strong>create, customize, preview, and export resumes</strong> without installing anything
+  or creating an account.
+</p>
 
-🧩 How It Works
+<p>You can:</p>
+<ul>
+  <li>⭐ Build structured resumes</li>
+  <li>⭐ Switch between templates</li>
+  <li>⭐ Customize colors & fonts</li>
+  <li>⭐ Export to high-quality PDF</li>
+  <li>⭐ Autosave progress automatically</li>
+</ul>
 
-Fill in details through the form on the left
+<p>
+  This project focuses on <strong>performance, usability, and simplicity</strong>, 
+  making resume creation easy for everyone.
+</p>
 
-Resume preview updates instantly
+<hr>
 
-Switch templates, colors, and fonts anytime
+<!-- Tech Stack -->
+<h2>🛠 Tech Stack</h2>
+<ul>
+  <li><strong>React 18</strong> – Component-based UI</li>
+  <li><strong>TypeScript</strong> – Type-safe development</li>
+  <li><strong>Vite</strong> – Ultra-fast dev/build tool</li>
+  <li><strong>TailwindCSS (CDN)</strong> – Styling</li>
+  <li><strong>html2pdf.js</strong> – PDF export</li>
+  <li><strong>LocalStorage</strong> – Persistent data</li>
+</ul>
 
-Export your final resume as a print-ready PDF
+<hr>
 
-📁 Project Structure
+<!-- Features -->
+<h2>✨ Features</h2>
+<ul>
+  <li>⚡ Real-time preview</li>
+  <li>📝 Add, edit, reorder resume sections</li>
+  <li>🎨 Multiple templates with theme & font controls</li>
+  <li>📄 High-quality PDF export</li>
+  <li>💾 Autosave using LocalStorage</li>
+  <li>📱 Fully responsive design</li>
+  <li>🌓 Dark/Light mode toggle</li>
+</ul>
+
+<hr>
+
+<!-- Quick Start -->
+<h2>🚀 Quick Start</h2>
+
+<h3>Install dependencies</h3>
+<pre><code>npm install</code></pre>
+
+<h3>Run development server</h3>
+<pre><code>npm run dev</code></pre>
+
+<h3>Build for production</h3>
+<pre><code>npm run build</code></pre>
+
+<hr>
+
+<!-- How It Works -->
+<h2>📄 How It Works</h2>
+<ul>
+  <li>Fill in resume details using the left panel</li>
+  <li>Preview updates instantly on the right</li>
+  <li>Switch templates, colors, and fonts anytime</li>
+  <li>Export your resume as a print-ready PDF</li>
+</ul>
+
+<hr>
+
+<!-- Project Structure -->
+<h2>📁 Project Structure</h2>
+<pre><code>
 src/
   components/
   templates/
@@ -51,11 +119,15 @@ src/
   main.tsx
 index.html
 vite.config.ts
+</code></pre>
 
-🌐 Live Demo
+<hr>
 
-👉 Add link here when deployed
+<h2>⭐ Support</h2>
+<p>
+  If you like this project, please consider <strong>starring the repository</strong> 
+  — it motivates future development!
+</p>
 
-⭐ Like This Project?
-
-Give it a ⭐ on GitHub — it motivates me to build more cool tools!
+</body>
+</html>
