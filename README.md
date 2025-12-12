@@ -1,20 +1,63 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+Free Resume Builder
 
-# Run and deploy your AI Studio app
+A modern and easy-to-use Resume Builder built with React, TypeScript, and Vite, allowing users to create professional resumes directly in their browser. The app features real-time editing, multiple templates, theme customization, PDF export, autosave, and a fully responsive UI.
 
-This contains everything you need to run your app locally.
+✨ Features
 
-View your app in AI Studio: https://ai.studio/apps/drive/1a5af8Zozx-2ub14s2oVebXiwHP5DEI_c
+Live preview with instant updates
 
-## Run Locally
+Add, edit, and reorder resume sections
 
-**Prerequisites:**  Node.js
+Multiple resume templates with customizable colors & fonts
 
+Export resume as high-quality PDF
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Autosave using LocalStorage
+
+Fully responsive and mobile-friendly
+
+Dark/Light mode support
+
+🛠️ Tech Stack
+
+React 18
+
+TypeScript
+
+Vite
+
+Tailwind CSS (CDN)
+
+html2pdf.js
+
+LocalStorage for persistent data
+
+🚀 Getting Started
+Install dependencies
+npm install
+
+Run development server
+npm run dev
+
+Build for production
+npm run build
+
+📄 How It Works
+
+Fill out the resume form on the left
+
+Preview updates instantly on the right
+
+Customize template, colors, and fonts
+
+Export your resume as a ready-to-print PDF
+
+📁 Project Structure
+src/
+  components/
+  templates/
+  utils/
+  App.tsx
+  main.tsx
+index.html
+vite.config.ts
