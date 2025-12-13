@@ -45,7 +45,30 @@ const App = () => {
     const savedData = localStorage.getItem('resume_data');
     if (savedData) {
       try {
-        setData(JSON.parse(savedData));
+        const parsed = JSON.parse(savedData);
+        
+        // MIGRATION LOGIC: Deep merge to ensure new fields (like certifications) exist in old data
+        const mergedData = {
+          ...INITIAL_DATA,
+          ...parsed,
+          personal: { ...INITIAL_DATA.personal, ...parsed.personal },
+          // Ensure arrays exist. If parsed value is undefined, use empty array (or initial data)
+          work: parsed.work || [],
+          education: parsed.education || [],
+          skills: parsed.skills || [],
+          projects: parsed.projects || [],
+          certifications: parsed.certifications || [], 
+          meta: {
+            ...INITIAL_DATA.meta,
+            ...parsed.meta,
+             // Ensure sectionOrder includes 'certifications' if it was missing in old data
+            sectionOrder: parsed.meta?.sectionOrder 
+              ? (parsed.meta.sectionOrder.includes('certifications') ? parsed.meta.sectionOrder : [...parsed.meta.sectionOrder, 'certifications'])
+              : INITIAL_DATA.meta.sectionOrder
+          }
+        };
+
+        setData(mergedData);
       } catch (e) {
         console.error("Failed to load save data", e);
       }

@@ -92,7 +92,7 @@ export const TemplateClassic: React.FC<TemplateProps> = ({ data }) => {
              ))}
           </section>
         );
-        if (section === 'certifications' && data.certifications.length > 0) return (
+        if (section === 'certifications' && data.certifications?.length > 0) return (
           <section key="certs" className="mb-6">
              <h3 className="text-lg font-bold uppercase mb-4 border-b border-gray-200 pb-1">Certifications</h3>
              {data.certifications.map(cert => (
@@ -161,7 +161,7 @@ export const TemplateModern: React.FC<TemplateProps> = ({ data }) => {
           ))}
         </div>
 
-        {data.certifications.length > 0 && (
+        {data.certifications?.length > 0 && (
           <div className="mb-8">
             <h3 className="text-xs font-bold uppercase tracking-wider mb-4 border-b border-white/20 pb-2">Certifications</h3>
             {data.certifications.map(cert => (
@@ -313,7 +313,7 @@ export const TemplateCreative: React.FC<TemplateProps> = ({ data }) => {
                ))}
              </section>
 
-             {data.certifications.length > 0 && (
+             {data.certifications?.length > 0 && (
                <section>
                  <h3 className="font-bold text-gray-900 text-lg mb-4 border-b pb-2">Certifications</h3>
                  {data.certifications.map(cert => (

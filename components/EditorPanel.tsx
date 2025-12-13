@@ -64,17 +64,21 @@ export const EditorPanel: React.FC<EditorPanelProps> = ({ data, onChange }) => {
     key: 'work' | 'education' | 'skills' | 'projects' | 'certifications',
     newItem: T
   ) => {
-    onChange({ ...data, [key]: [...data[key], newItem] });
+    // Ensure array exists
+    const list = data[key] || [];
+    onChange({ ...data, [key]: [...list, newItem] });
   };
 
   const removeItem = (key: 'work' | 'education' | 'skills' | 'projects' | 'certifications', id: string) => {
-    onChange({ ...data, [key]: (data[key] as any[]).filter(item => item.id !== id) });
+    const list = data[key] as any[] || [];
+    onChange({ ...data, [key]: list.filter(item => item.id !== id) });
   };
 
   const updateItem = (key: 'work' | 'education' | 'skills' | 'projects' | 'certifications', id: string, field: string, value: any) => {
+    const list = data[key] as any[] || [];
     onChange({
       ...data,
-      [key]: (data[key] as any[]).map(item => item.id === id ? { ...item, [field]: value } : item)
+      [key]: list.map(item => item.id === id ? { ...item, [field]: value } : item)
     });
   };
 
@@ -215,7 +219,8 @@ export const EditorPanel: React.FC<EditorPanelProps> = ({ data, onChange }) => {
 
                {section === 'certifications' && (
                  <SectionWrapper title="Certifications">
-                   {data.certifications.map(cert => (
+                   {/* Handle case where data.certifications might be undefined during migration */}
+                   {(data.certifications || []).map(cert => (
                      <div key={cert.id} className="p-4 border border-gray-100 dark:border-gray-700 rounded-lg bg-gray-50/50 dark:bg-gray-800 mb-4 animate-fade-in relative group/item">
                        <button onClick={() => removeItem('certifications', cert.id)} className="absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors opacity-0 group-hover/item:opacity-100"><IconTrash className="w-4 h-4" /></button>
                        <InputGroup label="Certification Name" value={cert.name} onChange={(v) => updateItem('certifications', cert.id, 'name', v)} />
